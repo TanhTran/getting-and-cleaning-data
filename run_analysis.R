@@ -31,7 +31,6 @@ gsub("\\-|\\(\\)","",labelMeasurements)
 write.table(MergeData,"data/tidyData.txt")
 
 ## Create a second, independent tidy data set
-# name the activities in the data set
 activityLabels<- read.table("./data/activity_labels.txt")
 Ytrain<- read.table("./data/y_train.txt")
 Ytest<- read.table("./data/y_test.txt")
