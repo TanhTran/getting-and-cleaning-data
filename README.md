@@ -10,21 +10,21 @@ This is a necessary skill as a datascientist, and getting & cleaning data is a g
 The raw data is loaded from the UCI HAR Dataset, which is downloaded from the course website under the course project section.
 
 ## Instructions:
-1. Set working directory to the folder that contain the relevant data:
+## Set working directory to the folder that contain the relevant data:
 	1. setwd("D:/Coursera/Johns Hopkins University/Data Science Specilization Certificate/3. Getting and Cleaning Data")
 
-2. Read the relevant data into R:
+## Read the relevant data into R:
 	1. Xtrain<- read.table("./data/X_train.txt")
 	2. Xtest<- read.table("./data/X_test.txt")
 	3. features<- read.table("./data/features.txt")
 
-3. Extract only the mean and standard deviation from the data set:
+## Extract only the mean and standard deviation from the data set:
 	1. measurements<- grep("mean\\(|std\\(", features$V2)
 
-4. Merge the train and the test data set: 
+## Merge the train and the test data set: 
 	1. MergeData<- rbind(Xtrain[,measurements],Xtest[,measurements])
 
-5. Name the activities in the data set: 
+## Name the activities in the data set: 
 
 figure out which part of the "measurements" variable need to be named: 
 
@@ -39,10 +39,10 @@ Using "gsub" command to replace any uneccesary characters to make it easy to rea
 
 	4. gsub("\\-|\\(\\)","",labelMeasurements)
 
-6. Label the tidy data set:
+## Label the tidy data set:
 	1. write.table(MergeData,"data/tidyData.txt")
 
-7. Create a second tidy set with the average of each variable for each activitie and subject:
+## Create a second tidy set with the average of each variable for each activitie and subject:
 
 read data:
 
