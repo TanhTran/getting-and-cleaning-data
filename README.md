@@ -31,11 +31,11 @@ a.figure out which part of the "measurements" variable need to be named:
 	1. features[measurements,1]
 	2. features[measurements,2] 
 
-b. based on the results of the above, "features[measurements,2]" will be named as "labelMeasurements":
+b.based on the results of the above, "features[measurements,2]" will be named as "labelMeasurements":
 
 	3. labelMeasurements<- features[measurements,2]
 
-c. Using "gsub" command to replace any uneccesary characters to make it easy to read:
+c.Using "gsub" command to replace any uneccesary characters to make it easy to read:
 
 	4. gsub("\\-|\\(\\)","",labelMeasurements)
 
