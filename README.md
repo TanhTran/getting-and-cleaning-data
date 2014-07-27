@@ -26,16 +26,16 @@ The raw data is loaded from the UCI HAR Dataset, which is downloaded from the co
 
 5. Name the activities in the data set: 
 
-a.figure out which part of the "measurements" variable need to be named: 
+5.1.figure out which part of the "measurements" variable need to be named: 
 
 	1. features[measurements,1]
 	2. features[measurements,2] 
 
-b.based on the results of the above, "features[measurements,2]" will be named as "labelMeasurements":
+5.2.based on the results of the above, "features[measurements,2]" will be named as "labelMeasurements":
 
 	3. labelMeasurements<- features[measurements,2]
 
-c.Using "gsub" command to replace any uneccesary characters to make it easy to read:
+5.3.Using "gsub" command to replace any uneccesary characters to make it easy to read:
 
 	4. gsub("\\-|\\(\\)","",labelMeasurements)
 
@@ -44,7 +44,7 @@ c.Using "gsub" command to replace any uneccesary characters to make it easy to r
 
 7. Create a second tidy set with the average of each variable for each activitie and subject:
 
-a. read data:
+7.1. read data:
 
 	1. activityLabels<- read.table("./data/activity_labels.txt")
 	2. Ytrain<- read.table("./data/y_train.txt")
@@ -52,25 +52,25 @@ a. read data:
 	4. subjectTrain<- read.table("./data/subject_train.txt")
 	5. subjectTest<- read.table("./data/subject_test.txt")
 
-b. combine the datasets:
+7.2. combine the datasets:
 
 	1. activities<- rbind(Ytrain, Ytest)[[1]]
 	2. subjects<- rbind(subjectTrain, subjectTest)[[1]]
 
-c. Reshape data:
+7.3. Reshape data:
 
 	1. library(reshape2)
 
-d. create a data frame of each variable for each subject and activity:
+7.4. create a data frame of each variable for each subject and activity:
 
 	1. dataFrame<- data.frame(activities, subjects,MergeData)
 
-e. Melt data:
+7.5. Melt data:
 
 	1. MeltData<- melt(dataFrame, id=c("activities"))
 	2. MeanData<- dcast(MeltData, subjects~variable, mean)
 
-f.Label the second tidy data set as "tidyMeanData":
+7.6.Label the second tidy data set as "tidyMeanData":
 
 	write.table(MeanData,"data/tidyMeanData.txt")
 
